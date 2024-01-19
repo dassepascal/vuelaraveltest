@@ -1,0 +1,4 @@
+composer require laravel/breeze --dev
+
+choisir blade 1
+
