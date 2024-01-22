@@ -18,7 +18,7 @@
 
 <body class="font-sans antialiased" id="app">
 
-        <div class="min-h-screen bg-gray-100">
+        <div >
             @include('layouts.navigation')
 
             <!-- Page Heading -->
@@ -33,7 +33,7 @@
             <!-- Page Content -->
             <main>
                 {{ $slot }}
-               
+
             </main>
         </div>
 
