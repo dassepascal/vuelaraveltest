@@ -14,4 +14,8 @@ class Product extends Model
         return $this->belongsToMany(Order::class)
             ->withPivot('total_quantity', 'total_price');
     }
+
+    public function getFormattedPriceAttribute(){
+        return str_replace('.', ',', $this->price/100).'€';
+    }
 }

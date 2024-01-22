@@ -65,13 +65,13 @@
 
 
                 <button x-on:click="open = ! open"
-                class="lg:hidden text-gray-500">
+                class="sm:hidden text-gray-500">
 
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
                 </button>
-                <div class="hidden lg:flex">
+                {{-- <div class="hidden lg:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
@@ -82,7 +82,7 @@
 
 
                     </ul>
-                </div>
+                </div> --}}
                 </div>
                 <div x-show="open" class="lg:hidden">
                     <div class="pt-2 pb-3 space-y-1">
@@ -102,7 +102,7 @@
         </div>
     </div>
 
-  
+
 
 
 

@@ -2,3 +2,62 @@ composer require laravel/breeze --dev
 
 choisir blade 1
 
+install lartavel shopping
+ cart
+ composer require "darryldecode/cart"
+
+
+
+php artisan make:controller Api\CartController --api
+
+
+ public function store(Request $request)
+    {
+        $product = Product::where('id', $request->productId)->first();
+        return $product;
+    }
+
+    passage du props dans la view index.blade.php
+      <add-to-cart :product-id="{{ $product->id }}" ></add-to-cart>
+
+      dans AddToCart
+       const productId = defineProps(['productId']);
+       const addToCart = () => {
+    console.log(productId)
+}
+shopping cart : https://github.com/darryldecode/laravelshoppingcart
+
+dans le CartController on a besoin d'etre connecté
+
+avec laravel sanctum SPA authentification utilisation du cookie dans kernel php on decommente
+'api' => [
+            \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,]
+
+
+creation d'une class qui va s'occuper de la gestion du pannier CartRepository
+
+copie du code dans shopping cart : https://github.com/darryldecode/laravelshoppingcart
+
+
+creation du dossier composable/products dans js
+
+formattage du price avec la methode dans Model/product.php
+ public function getFormattedPriceAttribute(){
+        return str_replace('.', ',', $this->price/100).'€';
+    }
+
+    dans la vue on utilise : formatted-price
+
+    creation du bouton pannier
+NavbarCart
+
+
+    note:
+    dans tailwind.config.js verifier que la ligne suivante existe:
+    './resources/js/**/*.vue',
+
+
+
+
+
+
