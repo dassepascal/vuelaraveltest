@@ -56,8 +56,31 @@ NavbarCart
     dans tailwind.config.js verifier que la ligne suivante existe:
     './resources/js/**/*.vue',
 
+ajout d'une methode qui nous renvoie le count
+dans composables/products/index.php
+
+ const getCount = async() => {
+// creation de la route positionner au-dessus de apiResource : Route::get('products/count',CartController::class);
+        let response = await axios.get('/api/products/count');
+        return response.data;
 
 
+    }
 
 
+creation de eventBus
+
+
+dans le cas de logout
+mis a jour à faire insere point d'interrogation
+
+ <div>{{ Auth::user()?->name }}</div>
+
+ install toaster : npm install @meforma/vue-toaster
+
+ service d'injection
+ dans app.js : app.use(Toaster).provide('toast', app.config.globalProperties.$toast);
+
+
+dans le catch()
 

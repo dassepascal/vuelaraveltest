@@ -7,9 +7,18 @@ export default function useProduct() {
         let response = await axios.post('/api/products', {
             productId: productId
         });
-
-    // methode
-
+        return response.data.count;
     }
-    return { add }
+    // methode count
+
+    const getCount = async() => {
+        let response = await axios.get('/api/products/count');
+        return response.data.count;
+    }
+
+    return {
+        add,
+        getCount
+     }
 }
+

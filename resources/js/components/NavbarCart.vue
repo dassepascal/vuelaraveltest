@@ -12,19 +12,22 @@
     </div>
 </template>
 <script setup>
-// import { onMounted, ref, watch } from 'vue';
-// import useProduct from '../composables/products';
-// import useEventBus from '../eventBus.js';
-// const { getCount } = useProduct();
-// const cartCount = ref(0);
-// const { bus } = useEventBus();
-// onMounted(async () => {
-//     cartCount.value = await getCount();
+ import { onMounted, ref, watch } from 'vue';
+ import useProduct from '../composables/products';
+ import useEventBus from '../eventBus.js';
+ const { getCount } = useProduct();
+ const cartCount = ref(0);
+ const { bus } = useEventBus();
+ onMounted(async () => {
+    cartCount.value = await getCount();
+    console.log(cartCount.value);
 
-// });
-// watch(() => bus.value.get('cartCountUpdated'), (count) => {
-//     const [cartCountUpdatedBus] = count;
-//     cartCount.value = cartCountUpdatedBus;
-// });
+
+ });
+
+ watch(() => bus.value.get('cartCountUpdated'), (count) => {
+     const [cartCountUpdatedBus] = count;
+     cartCount.value = cartCountUpdatedBus;
+ });
 </script>
 ../eventBus.js
