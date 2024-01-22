@@ -84,3 +84,4 @@ mis a jour à faire insere point d'interrogation
 
 dans le catch()
 
+recupitulatif du pannier shoppingCart
