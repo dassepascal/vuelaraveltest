@@ -85,3 +85,49 @@ mis a jour à faire insere point d'interrogation
 dans le catch()
 
 recupitulatif du pannier shoppingCart
+lien a du panier fonctionne
+affichage des produits selectionnés :
+dans products/index.js
+  const products = ref([]);// ne pas oublier ->import { ref } from 'vue';
+
+  le tableau de products est vide creation d'une methode pour les recuperer
+   const getProducts = async () => {
+        let response = await axios.get('/api/products');
+       return response.data.cartContent;
+    }
+
+  correspond à la methode index de- > Api/CartController
+   public function index()
+    {
+       $cartContent = (new CartRepository())->content();
+        return response()->json([
+            'cartContent' => $cartContent,
+        ]);
+    }
+au montage de shoppingCart ->onMounted()
+
+onMounted(async () => {
+     await getProducts();
+ })
+
+import useProduct from '../composables/products/index.js';
+
+const {products,getProducts} = useProduct();
+
+pas d'affichage modification dans products/index
+
+    const getProducts = async () => {
+        let response = await axios.get('/api/products');
+       products.value = response.data.cartContent;
+    }
+
+    creation d'un helper pour modifier l'affichage du prix
+    dans js/helpers/index.js
+    pour formatter le prix une methode en js taper => format price javascript : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat
+
+    new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(
+    number,
+
+    
+
+
