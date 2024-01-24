@@ -179,6 +179,22 @@ dans CartController
     }
 
 
+passage au paiement
+
+configuration de stripe
+composer require stripe/stripe-php
+
+creation de la route dans Web
+creation du controller  StripeCheckoutController
+creation de vue : StripeCheckout
+
+ne pas oublier dans layout/app
+  <!-- Scripts -->
+
+   <script src="https://js.stripe.com/v3/"></script>
+
+   
+
 
 
 
