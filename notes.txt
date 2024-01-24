@@ -128,6 +128,15 @@ pas d'affichage modification dans products/index
     new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(
     number,
 
-    
+
+shoppingCart incrementation et decrementation des paniers
+
+const increase + const decrease
+
+dans products/index.js
+creation des methodes avec changeùment de nom
+ const increaseQuantity et const decreaseQuantity
+ 
+
 
 

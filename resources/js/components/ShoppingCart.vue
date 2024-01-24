@@ -96,9 +96,9 @@ import { formatPrice } from '../helpers';
  const {
      products,
      getProducts,
-//     increaseQuantity,
-//     decreaseQuantity,
-//     destroyProduct,
+     increaseQuantity,
+     decreaseQuantity,
+     destroyProduct,
 //     cartCount
  } = useProduct();//rendu de la fonction useProduct
 
@@ -108,25 +108,25 @@ import { formatPrice } from '../helpers';
 // })
 
 
-// const increase = async (id) => {
-//     await increaseQuantity(id);
-//     await getProducts();
-// emit('cartCountUpdated', cartCount.value)
-// }
+const increase = async (id) => {
+    await increaseQuantity(id);
+    await getProducts();
+//emit('cartCountUpdated', cartCount.value)
+}
 
 
-// const decrease = async (id) => {
-//     await decreaseQuantity(id);
-//     await getProducts();
+const decrease = async (id) => {
+    await decreaseQuantity(id);
+    await getProducts();
+   // emit('cartCountUpdated', cartCount.value)
+}
+
+
+ const destroy = async (id) => {
+     await destroyProduct(id);
+     await getProducts();
 //     emit('cartCountUpdated', cartCount.value)
-// }
-
-
-// const destroy = async (id) => {
-//     await destroyProduct(id);
-//     await getProducts();
-//     emit('cartCountUpdated', cartCount.value)
-// }
+ }
 
  onMounted(async () => {
      await getProducts();

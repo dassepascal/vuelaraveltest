@@ -54,8 +54,27 @@ class CartController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        (new CartRepository())->remove($id);
     }
+
+public function increase(string $id)
+    {
+        $count = (new CartRepository())->increase($id);
+
+        return response()->json([
+            'count' => $count,
+        ]);
+    }
+
+    public function decrease(string $id)
+    {
+        $count = (new CartRepository())->decrease($id);
+
+        return response()->json([
+            'count' => $count,
+        ]);
+    }
+
 
     public function count()
     {

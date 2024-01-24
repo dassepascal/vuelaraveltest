@@ -1,4 +1,5 @@
 import { ref } from 'vue';
+import axios from 'axios';
 
 export default function useProduct() {
 
@@ -23,11 +24,27 @@ export default function useProduct() {
         return response.data.count;
     }
 
+    const increaseQuantity = async (id) => {
+        await axios.get('/api/products/increase/' + id);
+    }
+
+    const decreaseQuantity = async (id) => {
+        await axios.get('/api/products/decrease/' + id);
+    }
+
+    const destroyProduct = async (id) => {
+        await axios.delete('/api/products/ + id');
+    }
+
+
     return {
         add,
         getCount,
         products,
-        getProducts
+        getProducts,
+        increaseQuantity,
+        decreaseQuantity,
+        destroyProduct
      }
 }
 
