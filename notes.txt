@@ -96,6 +96,8 @@ dans products/index.js
        return response.data.cartContent;
     }
 
+
+
   correspond à la methode index de- > Api/CartController
    public function index()
     {
@@ -136,7 +138,47 @@ const increase + const decrease
 dans products/index.js
 creation des methodes avec changeùment de nom
  const increaseQuantity et const decreaseQuantity
- 
+
+
+ affichage reactif pour le total et le panier
+ {{cartTotal}}
+ computed vient de vue
+ import { onMounted, computed} from 'vue';
+
+ const cartTotal = computed(() => {
+    let price = Object.values(products.value).reduce((acc, product) => acc += product.price * product.quantity, 0);
+    return formatPrice(price)
+})
+
+actualiser le panier
+   const cartCount = ref(0);
+
+    emit('cartCountUpdated', cartCount.value)
+
+    dans products/index.js
+const getProducts = async () => {
+        let response = await axios.get('/api/products');
+       products.value = response.data.cartContent;
+
+      cartCount.value =  response.data.cartCount;// ajout de cette ligne
+
+
+    }
+
+
+dans CartController
+
+ public function index()
+    {
+       $cartContent = (new CartRepository())->content();
+       $cartCount = (new CartRepository())->count();//ajout ligne
+        return response()->json([
+            'cartContent' => $cartContent,
+            'cartCount' => $cartCount,//ajout ligne
+        ]);
+    }
+
+
 
 
 

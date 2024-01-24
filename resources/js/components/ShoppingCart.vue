@@ -61,7 +61,7 @@
                 <div class="p-4 bg-gray-100 rounded-full">
                     <h1 class="ml-2 font-bold uppercase">Order Details</h1>
                 </div>
-                <!-- <div class="p-4">
+                <div class="p-4">
                     <div class="flex justify-between pt-4 border-b">
                         <div class="lg:px-4 jg:py-2 m-2 lg:text-lg font-bold text-center text-gray-800">
                             Total
@@ -81,7 +81,7 @@
                             <span class="ml-2 mt-5px">Passer à la caisse</span>
                         </button>
                     </a>
-                </div> -->
+                </div>
             </div>
         </div>
     </div>
@@ -91,47 +91,47 @@
 import { onMounted, computed } from 'vue';
 import useProduct from '../composables/products/index.js';
 import { formatPrice } from '../helpers';
-// import useEventBus from '../eventBus.js';
-// const { emit } = useEventBus();
- const {
-     products,
-     getProducts,
-     increaseQuantity,
-     decreaseQuantity,
-     destroyProduct,
-//     cartCount
- } = useProduct();//rendu de la fonction useProduct
+import useEventBus from '../eventBus.js';
+const { emit } = useEventBus();
+const {
+    products,
+    getProducts,
+    increaseQuantity,
+    decreaseQuantity,
+    destroyProduct,
+    cartCount
+} = useProduct();//rendu de la fonction useProduct
 
-// const cartTotal = computed(() => {
-//     let price = Object.values(products.value).reduce((acc, product) => acc += product.price * product.quantity, 0);
-//     return formatPrice(price)
-// })
+const cartTotal = computed(() => {
+    let price = Object.values(products.value).reduce((acc, product) => acc += product.price * product.quantity, 0);
+    return formatPrice(price)
+})
 
 
 const increase = async (id) => {
     await increaseQuantity(id);
     await getProducts();
-//emit('cartCountUpdated', cartCount.value)
+    emit('cartCountUpdated', cartCount.value)
 }
 
 
 const decrease = async (id) => {
     await decreaseQuantity(id);
     await getProducts();
-   // emit('cartCountUpdated', cartCount.value)
+    emit('cartCountUpdated', cartCount.value)
 }
 
 
- const destroy = async (id) => {
-     await destroyProduct(id);
-     await getProducts();
-//     emit('cartCountUpdated', cartCount.value)
- }
+const destroy = async (id) => {
+    await destroyProduct(id);
+    await getProducts();
+    emit('cartCountUpdated', cartCount.value)
+}
 
- onMounted(async () => {
-     await getProducts();
+onMounted(async () => {
+    await getProducts();
 
- })
+})
 
 
 </script>

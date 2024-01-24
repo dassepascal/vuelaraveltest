@@ -4,10 +4,13 @@ import axios from 'axios';
 export default function useProduct() {
 
     const products = ref([]);
+    const cartCount = ref(0);
 
     const getProducts = async () => {
         let response = await axios.get('/api/products');
        products.value = response.data.cartContent;
+
+       cartCount.value = response.data.cartCount;
     }
 
 
@@ -44,7 +47,8 @@ export default function useProduct() {
         getProducts,
         increaseQuantity,
         decreaseQuantity,
-        destroyProduct
+        destroyProduct,
+        cartCount
      }
 }
 
