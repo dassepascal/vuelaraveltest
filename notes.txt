@@ -193,8 +193,23 @@ ne pas oublier dans layout/app
 
    <script src="https://js.stripe.com/v3/"></script>
 
-   
+   first cote php serveur
+   dans le dossier config creation d'un dossier stripe.php
 
+les definir dans notre fichier d'environnement
 
+creation de la methode total dans CartRepositories
+
+enregistrement des orders
+
+'metadata' => [
+                    'order_items' => (new CartRepository())->jsonOrderItems()
+                ]
+
+                creation de jsonOrderItems dans CartRepositories
+
+             dans StripeCheckout.vue
+
+             onMounted() => { await initialize(); }
 
 

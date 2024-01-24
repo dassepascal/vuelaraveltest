@@ -25,6 +25,7 @@ Route::get('/', function () {
 Route::get('/checkout', [StripeCheckoutController::class, 'create']);
 Route::post('/paymentIntent', [StripeCheckoutController::class, 'paymentIntent']);
 
+Route::get('merci', fn ()=>'merci pour votre commande');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

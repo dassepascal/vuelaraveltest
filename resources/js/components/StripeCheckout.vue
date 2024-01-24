@@ -17,21 +17,21 @@
 
 <script setup>
 
-// import { onMounted } from 'vue';
-// import useStripe from '../composables/stripe/index.js';
+ import { onMounted } from 'vue';
+ import useStripe from '../composables/stripe/index.js';
 
-// const {
-//     initialise,
-//     checkStatus,
-//     handleSumit,
+ const {
+     initialise,
+     checkStatus,
+     handleSumit,
 
-// } = useStripe();
+ } = useStripe();
 
 
-// onMounted(async () => {
-//     await initialise();
-//     await checkStatus();
-// })
+ onMounted(async () => {
+     await initialise();
+    await checkStatus();
+ })
 
 </script>
 
