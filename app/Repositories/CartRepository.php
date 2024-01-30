@@ -83,5 +83,11 @@ class CartRepository
             ->toJson();
     }
 
+    // creation de la methode clear
+    public function clear()
+    {
+        \Cart::session(auth()->user()->id)->clear();
+    }
+
 
 }
